@@ -2,14 +2,13 @@ let string = "some test string";
 
 // Задание 1,2
 alert(string.substring(0,1).toUpperCase());
-
-alert(string.substring(15).toUpperCase());
+alert(string.substring(string.length -1).toUpperCase());
 
 // Задание 3
 alert(string.indexOf("string"));
 
 // Задание 4
-alert(string.indexOf(" ", 5));
+console.log (string.indexOf(' ', string.indexOf(' ') + 1));
 
 // Задание 5
 alert(string.substr(5, 4));
