@@ -1,13 +1,9 @@
-var object = {
-  model: "12",
-  color: "12"
-}
-
 var someObject = {
-  product: "iphone",
-  price: 1000,
-  currency: "dollar",
-  details: object
+  product: "iphone"
 };
+
+someObject.price = 1000;
+someObject.currency = "dollar";
+someObject.details = object = {model: "", color: ""};
 
 console.log(someObject);
