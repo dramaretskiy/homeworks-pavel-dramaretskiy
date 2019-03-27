@@ -19,4 +19,4 @@ alert(example.toFixed(1));
 
 // Задание 5
 var string = "100$";
-alert(parseFloat(string));
+alert(parseInt(string));
