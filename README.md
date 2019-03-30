@@ -1,2 +1,2 @@
 # homeworks-pavel-dramaretskiy
-Homework
+Homework for the JS course (Easy Code)
