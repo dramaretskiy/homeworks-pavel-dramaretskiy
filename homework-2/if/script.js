@@ -46,7 +46,7 @@
 // 1. Если переменная равна “hidden”, присвоить ей значение “visible”, иначе - “hidden”.
 var someVar = "hidden";
 
-if (someVar == "hidden") {
+if (someVar === "hidden") {
   someVar = "visible";
 } else {
   someVar = "hidden";
@@ -62,7 +62,8 @@ alert(someVar);
 let someLet = 5;
 
 if (someLet == 0) {
-  alert(someLet = 1);
+  someLet = 1;
+  alert(someLet);
 } else if (someLet < 0) {
   alert("less than zero");
 } else if (someLet > 0) {
@@ -96,8 +97,9 @@ let item = {
   discount: "15%"
 }
 
-if (item.discount != undefined || null || "") {
-  item.priceWithDiscount = parseInt(item.price) - (parseInt(item.price) / 100 * parseInt(item.discount));
+if (item.discount) {
+  let itemPrice = parseInt(item.price);
+  item.priceWithDiscount = itemPrice - (itemPrice / 100 * parseInt(item.discount));
   console.log(item.priceWithDiscount);
 } else if(item.discount) {
   console.log(item.price);
@@ -117,7 +119,9 @@ let product = {
 let min = 10;
 let max = 20;
 
-if (parseInt(product.price) >= min && parseInt(product.price) <= max) {
+let productPrice = parseInt(product.price);
+
+if (productPrice >= min && productPrice <= max) {
   console.log(product.name);
 } else {
   console.log("Товаров не найдено");

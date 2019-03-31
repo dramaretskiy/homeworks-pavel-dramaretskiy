@@ -4,6 +4,6 @@ var someObject = {
 
 someObject.price = 1000;
 someObject.currency = "dollar";
-someObject.details = object = {model: "", color: ""};
+someObject.details = {model: "", color: ""};
 
 console.log(someObject);
