@@ -4,7 +4,10 @@ var string = "i am in the easycode";
 var space = "";
 
 for (var i = 0; i < string.length; i++) {
-  space += (string[i - 1] == ' ') ? string[i].toUpperCase() : string[i];
+  if(i === 0) {
+    space += string[i].toUpperCase();
+  }
+  space += (string[i - 1] === ' ') ? string[i].toUpperCase() : i!== 0 ? string[i] : '';
 }
 
 console.log(space);
@@ -35,13 +38,14 @@ console.log(result);
 // 4) На основе строки “JavaScript is a pretty good language” сделать новую строку,
 // где каждое слово начинается с большой буквы, а пробелы удалены. Использовать for.
 
-var c = "JavaScript is a good language";
+var c = "JavaScript is a pretty good language";
 var d = "";
 
-for (i = 0; i < c.length; i++) {
-    d += " " != c[i] ? i && " " != c[i - 1] ? c[i] : c[i].toUpperCase() : "";
+for (var i = 0; i < c.length; i++) {
+  d += (c[i - 1] === " ") ? c[i].toUpperCase() : c[i];
+  d = d.split(' ').join('');
 }
-    console.log(d);
+console.log(d);
 
 // 5) Найти все нечетные числа в массиве от 1 до 15 включительно и вывести их в консоль. Массив [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] Использовать for of.
 
