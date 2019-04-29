@@ -1,14 +1,13 @@
 // 1. Создать функцию, которая принимает два элемента. Функция проверяет, является ли первый элемент родителем для второго:
-function isParent(parent, child) {
-  if (parent.contains(child)) {
+function isParent (parent, child){
+  if (child.parentElement === parent){
     return true;
   }
   return false;
-}
+};
 
-console.log(
-  isParent(document.querySelector("ul"), document.querySelector("mark"))
-);
+console.log(isParent(document.querySelector("p"), document.querySelector('mark')));
+console.log(isParent(document.querySelector("ul"), document.querySelector("mark")));
 
 // 2. Получить список всех ссылок, которые не находятся внутри списка ul
 let links = Array.from(document.querySelectorAll('body a')).filter(link => !link.closest('ul'));
