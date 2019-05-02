@@ -99,12 +99,18 @@ for (let i = 0; i < allLinks.length; i++) {
 
 
 // 1. Не используя innerHTML, добавить в список несколько li с классом ‘new-item’ и текстом ‘item’ + номер li:
-for (let i = 0; i < 2; i++) {
+let numberLi = ulList.children.length;
+let newFragment = document.createDocumentFragment();
+
+for (let i = 1; i < 3; i++) {
   let item = document.createElement("li");
   item.className = "new-item";
   item.innerText = "item";
-  ulList.appendChild(item);
+  newFragment.appendChild(item);
+  item.textContent = `link ${numberLi + i}`;
 }
+
+ulList.appendChild(newFragment);
 
 
 // 2. В каждую ссылку, которая находятся внутри списка ul добавить по тегу strong (в каждую ссылку один - strong).
