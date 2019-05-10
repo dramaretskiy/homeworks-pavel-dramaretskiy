@@ -9,10 +9,8 @@
 // sum(1, 2, 3, 4); // 10 sum(); // 0
 
 const sum = (...props) => {
-  let params = Array.prototype.slice.call(props);
-
-  if (!params.length) return 0;
-  return params.reduce((prev, next) => prev + next);
+  if (!props.length) return 0;
+  return props.reduce((prev, next) => prev + next);
 };
 
 console.log(sum(1, 2, 3, 4));

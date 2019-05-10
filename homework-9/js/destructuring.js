@@ -3,10 +3,10 @@
 //     first: ‘a’,
 //     other: [‘b’, ‘c’, ‘d’] }
 
-function getFirstArgument(arguments, ...other) {
+function getFirstArgument(firstArgument, ...rest) {
   return {
-    first: arguments,
-    other: [...other]
+    first: firstArgument,
+    other: [...rest]
   };
 }
 
@@ -31,13 +31,15 @@ const organisation = {
 };
 
 function getInfo(object) {
-  const { name = "Unknown" } = object;
   const {
-    info: { partners }
+    name = "Unknown",
+    info: {
+      partners: [firstPartner, secondPartner, ...restPartners]
+    }
   } = object;
   return (
     console.log(`Name: ${name}`),
-    console.log(`Partners: ${partners[0]}, ${partners[1]}`)
+    console.log(`Partners: ${firstPartner}, ${secondPartner}`)
   );
 }
 

@@ -46,7 +46,7 @@ console.log(price.getPriceWithDiscount());
 const object = {
   height: 10,
   incHeight: function() {
-    return this.height + 1;
+    return ++this.height;
   }
 };
 
