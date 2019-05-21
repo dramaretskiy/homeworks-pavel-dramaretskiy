@@ -6,7 +6,6 @@
 // // Пример вызова:
 // // const comp = new Component("span");
 
-
 // // class Component {
 // //   constructor(tagName = "div") {
 // //     this.tagName = tagName;
@@ -17,7 +16,6 @@
 // // const comp = new Component("span");
 // // console.log(comp);
 
-
 // // 2. Реализовать конструктор и методы в ES6 синтаксисе:
 // // function Component(tagName) {
 // //   this.tagName = tagName || "div";
@@ -26,7 +24,6 @@
 // // Component.prototype.setText = function(text) {
 // //   this.node.textContent = text;
 // // };
-
 
 // class Component {
 //   constructor(tagName = "div") {
@@ -42,12 +39,10 @@
 // comp.setText = "123";
 // console.log(comp);
 
-
 // // 3. Создать класс калькулятора который будет принимать стартовое значение
 // // и у него будут методы сложить, вычесть, умножить , разделить.
 // // Также у него должны быть геттер и сеттер для получения и установки
 // // текущего числа с которым производятся вычисления.
-
 
 // class Calculator {
 //   constructor(startValue) {

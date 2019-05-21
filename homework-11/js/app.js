@@ -1,5 +1,4 @@
-// // // 
-
+// // //
 
 // for (let index = 0; index < 3; index++) {
 //     // index
@@ -77,14 +76,6 @@
 // });
 // console.log('Daewoo Matiz', herCar);
 
-
-
-
-
-
-
-
-
 // // ES6
 // class Traktor {
 //     constructor(name, key) {
@@ -105,8 +96,6 @@
 //         this.__myVal = newValue;
 //     }
 
-
-
 //     singSong() {
 //         // Traktor.getDate();
 //         console.log('MuMuMuMu....');
@@ -126,7 +115,7 @@
 // GET, POST, PUT, DELETE
 // 200, 300, 400, 500 - ответы от сервера
 
-const url = 'https://jsonplaceholder.typicode.com';
+const url = "https://jsonplaceholder.typicode.com";
 
 // get TODOS
 // const xhr = new XMLHttpRequest();
@@ -137,7 +126,6 @@ const url = 'https://jsonplaceholder.typicode.com';
 // xhr.addEventListener('load', () => {
 //     console.log(xhr.responseText);
 // });
-
 
 // // get USERS
 // const xhr2 = new XMLHttpRequest();
@@ -151,33 +139,31 @@ const url = 'https://jsonplaceholder.typicode.com';
 
 // TODO: write the CustomHttp class
 class CustomHttp {
-    get(url, callback) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
-        xhr.send();
-        xhr.addEventListener('load', () => {
-            const resp = JSON.parse(xhr.responseText)
-            callback(resp);
-        });
-    }
-    post(url, data, callback) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', url);
-        xhr.setRequestHeader('Content-type', 'application/json')
-        xhr.send(data);
-        xhr.addEventListener('load', () => {
-            const resp = JSON.parse(xhr.responseText)
-            callback(resp);
-        });
-    }
+  get(url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.send();
+    xhr.addEventListener("load", () => {
+      const resp = JSON.parse(xhr.responseText);
+      callback(resp);
+    });
+  }
+  post(url, data, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.send(data);
+    xhr.addEventListener("load", () => {
+      const resp = JSON.parse(xhr.responseText);
+      callback(resp);
+    });
+  }
 }
-
-
 
 const http = new CustomHttp();
 
-http.get('http.get(${url}/users', (response) => {
-    console.log('TODOS --- ', response);
+http.get(`http.get(${url}/users`, response => {
+  console.log("TODOS --- ", response);
 });
 
 // http.get('https://jsonplaceholder.typicode.com/users', (response) => {
@@ -185,9 +171,9 @@ http.get('http.get(${url}/users', (response) => {
 // });
 
 const data = {
-    body: 'Some body',
-    userId: 1,
-    title: 'Some title'
+  body: "Some body",
+  userId: 1,
+  title: "Some title"
 };
 // http.post('https://jsonplaceholder.typicode.com/todos', JSON.stringify(data), (response) => {
 //     console.log(response);
