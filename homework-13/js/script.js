@@ -8,13 +8,13 @@
 function promiseCreator(time, value) {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(console.log(value));
+      resolve(value);
     }, time);
   });
 }
 
 const prom = promiseCreator(2000, "Ok!");
-prom.then();
+prom.then(value => console.log(value));
 
 // 2. Создать класс, который производит экземпляр со следующими свойствами:
 // - promise - промис, который создается во время запуска конструктора;
@@ -35,11 +35,11 @@ class Prom {
   }
 
   resolve() {
-    return (this.promise = value);
+    return (this.resolve(value));
   }
 
   reject() {
-    return (this.promise = value);
+    return (this.reject());
   }
 }
 
