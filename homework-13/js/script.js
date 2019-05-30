@@ -35,11 +35,11 @@ class Prom {
   }
 
   resolve() {
-    return (this.resolve(value));
+    return this.resolve(value);
   }
 
   reject() {
-    return (this.reject());
+    return this.reject();
   }
 }
 
