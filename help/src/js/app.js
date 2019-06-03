@@ -1,10 +1,6 @@
-// Styles
-// import "./../css/style.css";
-// import "../style.less";
-// Libs
+import "../style.less";
 
 import { sum } from "lodash";
-
 import "jquery";
 
 import { NotificationUI } from "./view/NotificationUI";
@@ -21,40 +17,39 @@ const notificationUI = new NotificationUI(".news-wrap .row");
 
 // Handlers for events -- пишем функции-обработчики, которые нужны для addEventListener
 function onSelectChange() {
-  const country = countrySelect.value;
-  const category = categorySelect.value;
+    const country = countrySelect.value;
+    const category = categorySelect.value;
 
-  if (!country || !category)
-    return console.log("Choose the category and country");
+    if (!country || !category) return console.log("Choose the category and country");
 
-  loaderUI.setLoader();
-  newsService.getNewsByCountryAndCatigory(
-    ({ articles }) => {
-      loaderUI.removeLoader();
-      if (articles.length) {
-        newsUI.addNewsToView(articles);
-      } else {
-        notificationUI.showNotification("Not results");
-      }
-    },
-    country,
-    category
-  );
+    loaderUI.setLoader();
+    newsService.getNewsByCountryAndCatigory(
+        ({ articles }) => {
+            loaderUI.removeLoader();
+            if (articles.length) {
+                newsUI.addNewsToView(articles);
+            } else {
+                notificationUI.showNotification("Not results");
+            }
+        },
+        country,
+        category
+    );
 }
 
 function onSearchChange() {
-  const search = searchInput.value;
+    const search = searchInput.value;
 
-  if (search.length <= 2) return console.log("Введите больше трёх букв)");
-  loaderUI.setLoader();
-  newsService.getNewsBySearchQuery(({ articles }) => {
-    loaderUI.removeLoader();
-    newsUI.addNewsToView(articles);
+    if (search.length <= 2) return console.log("Введите больше трёх букв)");
+    loaderUI.setLoader();
+    newsService.getNewsBySearchQuery(({ articles }) => {
+        loaderUI.removeLoader();
+        newsUI.addNewsToView(articles);
 
-    if (articles.length === 0) {
-      return notificationUI.setNotification();
-    }
-  }, search);
+        if (articles.length === 0) {
+            return notificationUI.setNotification();
+        }
+    }, search);
 }
 
 // Event listeners
