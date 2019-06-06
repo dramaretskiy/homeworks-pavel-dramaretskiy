@@ -55,9 +55,11 @@ class Build {
     this.name = name;
     this.floors = floors;
   }
+
   get numberOfFloors() {
     return this.floors;
   }
+
   set numberOfFloors(value) {
     this.floors = value;
   }
@@ -68,6 +70,7 @@ class House extends Build {
     super(name, floors);
     this.quantityApartments = quantityApartments;
   }
+
   get numberOfFloors() {
     return {
       Floors: this.floors,
@@ -123,6 +126,7 @@ class OfficeFurniture extends Furniture {
     super(name, price);
     this.availabilityShredder = availabilityShredder;
   }
+
   getInformation() {
     return {
       name: this.name,
@@ -137,6 +141,7 @@ class HomeFurniture extends Furniture {
     super(name, price);
     this.availabilityShelves = availabilityShelves;
   }
+
   getInformation() {
     return {
       name: this.name,
@@ -181,8 +186,8 @@ User.prototype.getInformation = function() {
 };
 
 class Admin extends User {
-  constructor(name, dateRegistration) {
-    super(name, dateRegistration);
+  constructor(...args) {
+    super(...args);
   }
 
   get superAdmin() {
@@ -204,11 +209,13 @@ class Guest extends User {
     super(name, dateRegistration);
     this.validDate = validDate;
   }
+
   createDate() {
     this.startDate = new Date(this.validDate);
     this.endDate = new Date(this.validDate);
     this.endDate.setDate(this.endDate.getDate() + 7);
     this.localestr = this.endDate.toLocaleDateString();
+
     return this.localestr;
   }
 }
