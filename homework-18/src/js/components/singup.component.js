@@ -1,20 +1,16 @@
-import {
-    AuthService
-} from './../services/auth.service';
-import {
-    Routing
-} from './../core/routing.service';
+import { AuthService } from "./../services/auth.service";
+import { Routing } from "./../core/routing.service";
 
 export class SingupComponent {
-    constructor() {
-        this._authService = new AuthService();
-        this._routing = new Routing();
+  constructor() {
+    this._authService = new AuthService();
+    this._routing = new Routing();
 
-        this.afterRender = this.afterRender.bind(this)
-    }
+    this.afterRender = this.afterRender.bind(this);
+  }
 
-    render() {
-        return `
+  render() {
+    return `
         <div class="auth-wrap d-flex mt-5">
             <div class="auth-form col col-6 mx-auto my-auto">
                 <h3>Singup to Social.</h3>
@@ -43,28 +39,33 @@ export class SingupComponent {
             <div class="auth-bg col col-6"></div>
         </div>
         `;
-    }
+  }
 
-    afterRender() {
-        document.forms['singupForm'].addEventListener('submit', (e) => {
-            e.preventDefault();
+  afterRender() {
+    document.forms["singupForm"].addEventListener("submit", e => {
+      e.preventDefault();
 
-            const values = Array.prototype.reduce.call(e.target.querySelectorAll('input'), (init, input) => ({
-                ...init,
-                [input.id]: input.value
-            }), {})
+      const values = Array.prototype.reduce.call(
+        e.target.querySelectorAll("input"),
+        (init, input) => ({
+          ...init,
+          [input.id]: input.value
+        }),
+        {}
+      );
 
-            if (Object.keys(values).some(v => !values[v])) return;
+      if (Object.keys(values).some(v => !values[v])) return;
 
-            this._authService.singup({
-                    ...values
-                })
-                .then(() => {
-                    this._routing.navigate('/login')
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+      this._authService
+        .singup({
+          ...values
+        })
+        .then(() => {
+          this._routing.navigate("/login");
+        })
+        .catch(err => {
+          console.log(err);
         });
-    }
+    });
+  }
 }

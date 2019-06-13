@@ -3,8 +3,6 @@ import { ENV } from "./../config/env";
 
 export class NewsService {
   getNews(token) {
-		console.log(token);
-		
     const http = new Http();
 
     return new Promise(async (resolve, reject) => {
@@ -12,7 +10,7 @@ export class NewsService {
         const result = await http.get(`${ENV.apiUrl}/public/news`, {
           headers: { "x-access-token": token }
         });
-				resolve(result);
+        resolve(result);
       } catch (error) {
         reject(error);
       }

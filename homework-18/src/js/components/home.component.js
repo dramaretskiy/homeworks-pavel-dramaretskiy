@@ -1,7 +1,7 @@
 export class HomeComponent {
-    render() {
-        return `
-            <div>Home</div>
-        `;
-    }
+  render() {
+    return `
+        <div>Home</div>
+    `;
+  }
 }

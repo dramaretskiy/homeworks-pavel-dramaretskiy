@@ -1,5 +1,5 @@
 export class Routing {
-    navigate(route) {
-        location.hash = route
-    }
+  navigate(route) {
+    location.hash = route;
+  }
 }

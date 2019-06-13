@@ -1,27 +1,23 @@
-import {
-    AuthService
-} from './../services/auth.service';
-import {
-    Routing
-} from './../core/routing.service';
+import { AuthService } from "./../services/auth.service";
+import { Routing } from "./../core/routing.service";
 
 export class LoginComponent {
-    constructor() {
-        this._authService = new AuthService();
-        this._routing = new Routing();
+  constructor() {
+    this._authService = new AuthService();
+    this._routing = new Routing();
 
-        this.beforeRender = this.beforeRender.bind(this)
-        this.afterRender = this.afterRender.bind(this)
+    this.beforeRender = this.beforeRender.bind(this);
+    this.afterRender = this.afterRender.bind(this);
+  }
+
+  beforeRender() {
+    if (this._authService.token) {
+      this._routing.navigate(`/users/${this._authService.userId}`);
     }
+  }
 
-    beforeRender() {
-        if (this._authService.token) {
-            this._routing.navigate(`/users/${this._authService.userId}`)
-        }
-    }
-
-    render() {
-        return `
+  render() {
+    return `
         <div class="auth-wrap d-flex mt-5">
             <div class="auth-form col col-6 mx-auto my-auto">
                 <h3>Login to Social.</h3>
@@ -39,30 +35,30 @@ export class LoginComponent {
             <div class="auth-bg col col-6"></div>
         </div>
         `;
-    }
+  }
 
-    afterRender() {
-        document.forms['loginForm'].addEventListener('submit', async (e) => {
-            e.preventDefault();
+  afterRender() {
+    document.forms["loginForm"].addEventListener("submit", async e => {
+      e.preventDefault();
 
-            const email = e.target.elements['email'].value;
-            const password = e.target.elements['password'].value;
+      const email = e.target.elements["email"].value;
+      const password = e.target.elements["password"].value;
 
-            if (!email || !password) return;
+      if (!email || !password) return;
 
-            try {
-                const response = await this._authService.login(email, password)
-                this._routing.navigate(`/users/${response.id}`)
-            } catch (err) {
-                console.log(err);
-            }
-            //this._authService.login(email, password)
-            // .then((response) => {
-            //     this._routing.navigate(`/users/${response.id}`)
-            // })
-            // .catch((err) => {
-            //     console.log(err);
-            // });
-        });
-    }
+      try {
+        const response = await this._authService.login(email, password);
+        this._routing.navigate(`/users/${response.id}`);
+      } catch (err) {
+        console.log(err);
+      }
+      //this._authService.login(email, password)
+      // .then((response) => {
+      //     this._routing.navigate(`/users/${response.id}`)
+      // })
+      // .catch((err) => {
+      //     console.log(err);
+      // });
+    });
+  }
 }

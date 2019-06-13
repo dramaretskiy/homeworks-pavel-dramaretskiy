@@ -1,40 +1,36 @@
-import {
-    AuthService
-} from './../services/auth.service';
-import {
-    ActiveRoute
-} from './../core/active.route.service';
-import {
-    UserService
-} from './../services/user.service';
+import { AuthService } from "./../services/auth.service";
+import { ActiveRoute } from "./../core/active.route.service";
+import { UserService } from "./../services/user.service";
 
 export class UserComponent {
-    constructor() {
-        this._activeRoute = new ActiveRoute();
-        this._authService = new AuthService();
-        this._userService = new UserService();
+  constructor() {
+    this._activeRoute = new ActiveRoute();
+    this._authService = new AuthService();
+    this._userService = new UserService();
 
-        this.beforeRender = this.beforeRender.bind(this)
-        this.render = this.render.bind(this)
-        this.style = this.style.bind(this)
+    this.beforeRender = this.beforeRender.bind(this);
+    this.render = this.render.bind(this);
+    this.style = this.style.bind(this);
 
-        this._authUserId = this._authService.userId
-        this._user = {}
-    }
+    this._authUserId = this._authService.userId;
+    this._user = {};
+  }
 
-    async beforeRender() {
-        this._user = await this._userService.getUser(this._authUserId)
-    }
+  async beforeRender() {
+    this._user = await this._userService.getUser(this._authUserId);
+  }
 
-    render() {
-        return `
+  render() {
+    return `
             <!-- Component styles -->
             <style>
                 ${this.style()}
             </style>
             <!-- Component html -->
             <div class="user-cover-container"
-                style="background: url(${this._user.cover}) no-repeat center / cover;"
+                style="background: url(${
+                  this._user.cover
+                }) no-repeat center / cover;"
             >
             </div>
             <div class="user-avatar-container d-flex justify-content-center">
@@ -43,9 +39,9 @@ export class UserComponent {
                 </div>
             </div>
         `;
-    }
-    style() {
-        return `
+  }
+  style() {
+    return `
             img {
                 max-width: 100%;
             }
@@ -63,5 +59,5 @@ export class UserComponent {
                 overflow: hidden;
             }
         `;
-    }
+  }
 }
