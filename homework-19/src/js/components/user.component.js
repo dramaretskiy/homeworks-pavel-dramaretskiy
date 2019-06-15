@@ -1,12 +1,6 @@
-import {
-  AuthService
-} from '../services/auth.service';
-import {
-  ActiveRoute
-} from '../core/active.route.service';
-import {
-  UserService
-} from '../services/user.service';
+import { AuthService } from "../services/auth.service";
+import { ActiveRoute } from "../core/active.route.service";
+import { UserService } from "../services/user.service";
 
 export class UserComponent {
   constructor() {
@@ -14,23 +8,22 @@ export class UserComponent {
     this._authService = new AuthService();
     this._userService = new UserService();
 
-    this.beforeRender = this.beforeRender.bind(this)
-    this.render = this.render.bind(this)
-    this.style = this.style.bind(this)
+    this.beforeRender = this.beforeRender.bind(this);
+    this.render = this.render.bind(this);
+    this.style = this.style.bind(this);
 
-    this._user = {}
+    this._user = {};
   }
 
   async beforeRender() {
-    const {
-      userId
-    } = this._authService
-    this._user = await this._userService.getUser(userId)
-    const {
-      images
-    } = await this._userService.getUserImages(userId)
+    const { userId } = this._authService;
+    this._user = await this._userService.getUser(userId);
+    const { images } = await this._userService.getUserImages(userId);
 
-    this._imagesTemplate = images.reduce((init, item) => init += this._singleImageTemplate(item), '')
+    this._imagesTemplate = images.reduce(
+      (init, item) => (init += this._singleImageTemplate(item)),
+      ""
+    );
   }
 
   render() {
@@ -41,7 +34,9 @@ export class UserComponent {
         </style>
         <!-- Component html -->
         <div class="user-cover-container"
-            style="background: url(${this._user.cover}) no-repeat center / cover;"
+            style="background: url(${
+              this._user.cover
+            }) no-repeat center / cover;"
         >
         </div>
         <div class="user-avatar-container d-flex justify-content-center">
@@ -76,7 +71,6 @@ export class UserComponent {
       </div>
     `;
   }
-
 
   style() {
     return `
